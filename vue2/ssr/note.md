@@ -5,5 +5,6 @@
    
 2. 需要等router.ready的时候再返回vue字符串
 
-3. server-entry打包成一个server-bundle.json, client-entry打包成一个client-bundle.mainfast。然后传给vue-ssr-render根据请求处理好，返回响应就可以。
+3. server-entry打包成一个server-bundle.json, client-entry打包成一个client-bundle.mainfast。
+   然后和ssr.template一起传给vue-ssr-render根据请求处理好，返回响应就可以。
 
