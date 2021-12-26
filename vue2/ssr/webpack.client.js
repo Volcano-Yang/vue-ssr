@@ -3,7 +3,8 @@
 /** @type {import('webpack').Configuration} */
 const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
-const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
+const VueSSRClientPlugin = require("vue-server-renderer/client-plugin");
+const webpack = require("webpack");
 
 const config = {
   entry: "./src/client-entry.js",
@@ -13,7 +14,7 @@ const config = {
     filename: "client-bundle.js",
   },
 
-  devtool: 'source-map',
+  devtool: "source-map",
 
   module: {
     rules: [
@@ -24,7 +25,6 @@ const config = {
           {
             loader: "html-loader",
           },
-        
         ],
       },
       // 它会应用到普通的 `.css` 文件
@@ -36,10 +36,26 @@ const config = {
     ],
   },
 
+  // 重要信息：这将 webpack 运行时分离到一个引导 chunk 中，
+  // 以便可以在之后正确注入异步 chunk。
+  // 这也为你的 应用程序/vendor 代码提供了更好的缓存。
+  // webpack4中已经没有webpack.optimize.CommonsChunkPlugin，需要这样配置。
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          name: "commons",
+          chunks: "initial",
+          minChunks: 2,
+        },
+      },
+    },
+  },
+
   plugins: [
-    new VueLoaderPlugin(), 
-    new VueSSRClientPlugin()
-  ]
+    new VueLoaderPlugin(),
+    new VueSSRClientPlugin(),
+  ],
 };
 
 module.exports = config;

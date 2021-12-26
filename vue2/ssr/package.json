@@ -9,7 +9,9 @@
     "build:ssr-server": "webpack --config ./webpack.server.js --progress --mode=production",
     "dev:ssr-server": "webpack-dev-server --hot --config ./webpack.server.js --progress --mode=development",
     "build:ssr-client": "webpack --config ./webpack.client.js --progress --mode=production",
-    "dev:ssr-client": "webpack-dev-server --hot --config ./webpack.client.js --progress --mode=development"
+    "dev:ssr-client": "webpack-dev-server --hot --config ./webpack.client.js --progress --mode=development",
+    "build:ssr": "rm -rf dist && npm run build:ssr-client && npm run build:ssr-server",
+    "dev:ssr": "node ./server/index.js"
   },
   "author": "Volcano-Yang",
   "license": "ISC",
