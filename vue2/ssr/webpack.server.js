@@ -2,8 +2,9 @@
 
 /** @type {import('webpack').Configuration} */
 const path = require("path");
-const VueSSRServerPlugin = require("vue-server-renderer/server-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
+const VueSSRServerPlugin = require("vue-server-renderer/server-plugin");
+
 
 const config = {
   // 这允许 webpack 以 Node 适用方式处理动态导入(dynamic import)，
@@ -16,7 +17,7 @@ const config = {
   entry: "./src/server-entry.js",
 
   output: {
-    path: path.resolve(__dirname, "../dist"),
+    path: path.resolve(__dirname, "./dist"),
     filename: "[name].bundle.js",
     // 此处告知 server bundle 使用 Node 风格导出模块
     libraryTarget: "commonjs2",
@@ -27,10 +28,6 @@ const config = {
       {
         test: /.vue$/,
         use: "vue-loader",
-      },
-      {
-        test: /\.js$/,
-        use: "babel-loader",
       },
       {
         test: /\.html$/,

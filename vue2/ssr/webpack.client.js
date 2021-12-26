@@ -2,15 +2,15 @@
 
 /** @type {import('webpack').Configuration} */
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
+const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 
 const config = {
   entry: "./src/client-entry.js",
 
   output: {
+    path: path.resolve(__dirname, "./dist"),
     filename: "client-bundle.js",
-    clean: true, 
   },
 
   devtool: 'source-map',
@@ -27,10 +27,6 @@ const config = {
         
         ],
       },
-      {
-        test: /\.js$/,
-        use: 'babel-loader'
-      },
       // 它会应用到普通的 `.css` 文件
       // 以及 `.vue` 文件中的 `<style>` 块
       {
@@ -41,13 +37,8 @@ const config = {
   },
 
   plugins: [
-    new HtmlWebpackPlugin({
-      // 打包输出HTML标题
-      title: "打包vue",
-      // 根据此模版生成 HTML 文件
-      template: path.join(__dirname, "./public/spa.template.html"),
-    }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(), 
+    new VueSSRClientPlugin()
   ]
 };
 
