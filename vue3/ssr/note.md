@@ -39,3 +39,9 @@ src/router/index.ts:31:16 - error TS2531: Object is possibly 'null'.
 31   const name = path.match(/\.\.\/pages\/(.*)\.vue$/)[1].toLowerCase();
 
 ```
+
+5. 返回的直出html没有样式
+
+先你需要改造render代码，让他生成环境下，用client打包出来的index.html和manifest.json
+
+然后你需要改造你的server应用，当访问的是静态资源的时候，不能返回html生成后的直出模板，而是应该返回真正的静态资源。

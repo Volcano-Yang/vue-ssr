@@ -5,7 +5,7 @@
     "dev:server": "cross-env SERVER_RENDER_MODE=development node server.js",
     "prod:server": "cross-env SERVER_RENDER_MODE=production node server.js",
     "dev:client": "vite",
-    "build:client": "vue-tsc --noEmit && vite build --outDir dist/client",
+    "build:client": "vue-tsc --noEmit && vite build --outDir dist/client --ssrManifest",
     "build:server": "vue-tsc --noEmit && vite build --outDir dist/server --ssr src/entry-server.ts ",
     "preview": "vite preview"
   },
