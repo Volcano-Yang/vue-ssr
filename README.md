@@ -20,11 +20,9 @@
 
 > 技术栈：vue3+vue-router+vuex+typescript+vite 
 
-- [ ] 先搭建一个简单的vue3-spa应用
-- [ ] 搭建vue3-ssr的同构代码框架
-- [ ] 打包出vue-ssr-server-bundle.json
-- [ ] 打包出vue-ssr-client-manifest.json
-- [ ] 利用打包产品渲染出ssr应用的首屏快照返回给客户端，并在客户端成功激活
+- [x] 先搭建一个简单的vue3-spa应用
+- [x] 使用vite初始搭建vite+vue3 ssr项目框架
+- [x] 利用打包产品渲染出ssr应用的首屏快照返回给客户端，并在客户端成功激活
 - [ ] 在ssr的node端拉取首屏数据，并且共享给客户端
 - [ ] 优化开发体验，支持热更新等
 - [ ] 编写vue3-ssr相关搭建文档
