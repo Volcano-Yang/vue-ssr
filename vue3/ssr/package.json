@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "dev:server": "cross-env SERVER_RENDER_MODE=development node server.js",
-    "prod:server": "cross-env SERVER_RENDER_MODE=production node server.js",
     "dev:client": "vite",
     "build:client": "vue-tsc --noEmit && vite build --outDir dist/client --ssrManifest",
     "build:server": "vue-tsc --noEmit && vite build --outDir dist/server --ssr src/entry-server.ts ",
-    "preview": "vite preview"
+    "build": "vue-tsc --noEmit && vite build --outDir dist/server --ssr src/entry-server.ts && vite build --outDir dist/client --ssrManifest",
+    "prod": "cross-env SERVER_RENDER_MODE=production node server.js"
   },
   "dependencies": {
     "@vue/server-renderer": "^3.2.26",

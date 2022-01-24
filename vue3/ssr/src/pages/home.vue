@@ -24,8 +24,10 @@ import Count from '../components/Count.vue'
 </script>
 
 <style>
-.cat-image {
-  margin: 1rem;
-  width: 20rem;
+.home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
 }
 </style>

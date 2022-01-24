@@ -22,6 +22,6 @@ console.log("created catImageUrl.value", catImageUrl.value);
 <style>
 .cat-image {
   margin: 1rem;
-  width: 20rem;
+  width: 10rem;
 }
 </style>

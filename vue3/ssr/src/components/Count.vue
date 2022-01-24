@@ -1,5 +1,5 @@
 <template>
-    <button type="button" @click="addCount">count is: {{ count }}</button>
+    <button class="count" type="button" @click="addCount">count is: {{ count }}</button>
 </template>
 
 <script setup lang="ts">
@@ -17,4 +17,9 @@ onUpdated(() => {
 </script>
 
 <style>
+
+.count{
+  margin: 1rem;
+}
+
 </style>
