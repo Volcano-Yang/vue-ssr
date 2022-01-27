@@ -1,11 +1,9 @@
 import { createApp } from './main';
+import { store } from './store'
 
 const { app, router } = createApp();
 
-console.log("entry-client.ts")
-
 router.isReady().then(() => {
-  console.log("app", app)
 
-  app.mount('#app');
+  app.use(store).mount('#app');
 });

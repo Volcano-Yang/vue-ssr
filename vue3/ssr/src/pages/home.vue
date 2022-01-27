@@ -19,8 +19,6 @@ import Content from '../components/Content.vue'
 import Cat from '../components/Cat.vue'
 import Count from '../components/Count.vue'
 
-
-
 </script>
 
 <style>
