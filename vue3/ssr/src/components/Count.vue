@@ -1,5 +1,7 @@
 <template>
-    <button class="count" type="button" @click="addCount">count is: {{ asyncData.count }}</button>
+    <!-- <button class="count" type="button" @click="addCount">count is: {{ asyncData.count }}</button> -->
+    <button class="count" type="button" @click="addCount">count is: {{ count }}</button>
+
 </template>
 
 <script setup lang="ts">
@@ -26,39 +28,39 @@
 // })
 
 // 不使用vuex版的
-// import { ref, onUpdated } from 'vue'
+import { ref, onUpdated } from 'vue'
 
-// const count = ref(0);
+const count = ref(0);
 
-// const addCount = () => {
-//   count.value++;
-// }
+const addCount = () => {
+  count.value++;
+}
 
-// onUpdated(() => {
-//   console.log("onUpdated count", count.value);
-// })
+onUpdated(() => {
+  console.log("onUpdated count", count.value);
+})
 
 
 // 初始化window.__ASYNCDATA__
 
-import { reactive, onUpdated } from 'vue'
+// import { reactive, onUpdated } from 'vue'
 
-window.__ASYNCDATA__ = {
-  count: 1,
-  asyncData: true
-}
+// window.__ASYNCDATA__ = {
+//   count: 1,
+//   asyncData: true
+// }
 
 
 
-const asyncData = reactive(window.__ASYNCDATA__);
+// const asyncData = reactive(window.__ASYNCDATA__);
 
-const addCount = () => {
-  asyncData.count ++;
-}
+// const addCount = () => {
+//   asyncData.count ++;
+// }
 
-onUpdated(() => {
-  console.log("onUpdated count", asyncData.count);
-})
+// onUpdated(() => {
+//   console.log("onUpdated count", asyncData.count);
+// })
 
 </script>
 

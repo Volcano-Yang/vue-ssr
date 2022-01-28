@@ -2,7 +2,7 @@
   "name": "vue3-vite-spa",
   "version": "0.0.0",
   "scripts": {
-    "dev:server": "cross-env SERVER_RENDER_MODE=development node server.js",
+    "dev:server": "cross-env SERVER_RENDER_MODE=development nodemon server.js",
     "dev:client": "vite",
     "build:client": "vue-tsc --noEmit && vite build --outDir dist/client --ssrManifest",
     "build:server": "vue-tsc --noEmit && vite build --outDir dist/server --ssr src/entry-server.ts ",

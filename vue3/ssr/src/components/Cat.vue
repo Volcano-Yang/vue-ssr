@@ -1,21 +1,36 @@
 <template>
-  <img class="cat-image" :src="catImageUrl" />
+  <img class="cat-image" :src="asyncData.catImageUrl" />
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import axios from 'axios'
 
+async function getAsyncData() {
+  const getCatImagesResult = await axios.get('https://dog.ceo/api/breeds/image/random');
 
-const catImageUrl = ref('');
+  const catImageUrl = getCatImagesResult?.data?.message ?? '';
 
-const response = await axios.get('https://dog.ceo/api/breeds/image/random');
+  return {
+    catImageUrl,
+  }
+}
 
-console.log("created response?.data", response?.data);
+// window.__ASYNCDATA__ = await getAsyncData();
 
-catImageUrl.value = response?.data?.message ?? '';
+const isNode = typeof globalThis.process !== 'undefined' &&
+  globalThis.process.versions !== null &&
+  globalThis.process.versions.node !== undefined;
 
-console.log("created catImageUrl.value", catImageUrl.value);
+let asyncData = reactive({
+  catImageUrl: '',
+});
+
+if (!isNode && window.__ASYNCDATA__) {
+  asyncData = reactive(window.__ASYNCDATA__);
+}
+
+console.log("created catImageUrl", asyncData.catImageUrl);
 
 </script>
 

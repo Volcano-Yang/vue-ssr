@@ -21,6 +21,7 @@ async function createServer() {
     const vite = await createViteServer({
         server: { middlewareMode: 'ssr' }
     })
+    
     // 使用 vite 的 Connect 实例作为中间件
     app.use(vite.middlewares)
 

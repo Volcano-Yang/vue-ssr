@@ -7,6 +7,12 @@ export async function render(url: string) {
   router.push(url);
   await router.isReady();
 
+  const matchedComponents = router.currentRoute.value.matched.flatMap(record =>
+    Object.values(record.components)
+  )
+
+  console.log("matchedComponents", matchedComponents);
+
   const template = await renderToString(app);
 
   return { template };
