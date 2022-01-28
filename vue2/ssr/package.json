@@ -11,15 +11,16 @@
     "build:ssr-client": "webpack --config ./webpack.client.js --progress --mode=production",
     "dev:ssr-client": "webpack-dev-server --hot --config ./webpack.client.js --progress --mode=development",
     "build:ssr": "rm -rf dist && npm run build:ssr-client && npm run build:ssr-server",
-    "dev:ssr": "node ./server/index.js"
+    "dev:ssr": "node server.js"
   },
   "author": "Volcano-Yang",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.2",
     "vue": "^2.6.14",
     "vue-router": "^3.5.3",
     "vue-server-renderer": "^2.6.14",
-    "express": "^4.17.2"
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "css-loader": "^6.3.0",

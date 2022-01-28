@@ -12,6 +12,9 @@ export default {
       msg: "footer",
     };
   },
+  mounted() {
+    console.log("this.$store.state.count", this.$store.state.count);
+  },
 };
 </script>
 

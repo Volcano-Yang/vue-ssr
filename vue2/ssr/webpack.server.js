@@ -17,7 +17,7 @@ const config = {
   entry: "./src/server-entry.js",
 
   output: {
-    path: path.resolve(__dirname, "./dist"),
+    path: path.resolve(__dirname, "./dist/server"),
     filename: "[name].bundle.js",
     // 此处告知 server bundle 使用 Node 风格导出模块
     libraryTarget: "commonjs2",

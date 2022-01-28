@@ -12,6 +12,9 @@ export default {
       msg: "bar",
     };
   },
+  mounted() {
+    console.log("this.$store.state.count", this.$store.state.count);
+  },
 };
 </script>
 

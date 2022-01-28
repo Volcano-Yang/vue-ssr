@@ -10,7 +10,9 @@ const config = {
   entry: "./src/client-entry.js",
 
   output: {
-    path: path.resolve(__dirname, "./dist"),
+    //要指向express中的静态服务器目录
+    publicPath: '/dist/client',
+    path: path.resolve(__dirname, "./dist/client"),
     filename: "client-bundle.js",
   },
 
