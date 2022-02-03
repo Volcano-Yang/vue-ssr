@@ -6,8 +6,9 @@
     "dev:client": "vite",
     "build:client": "vue-tsc --noEmit && vite build --outDir dist/client --ssrManifest",
     "build:server": "vue-tsc --noEmit && vite build --outDir dist/server --ssr src/entry-server.ts ",
-    "build": "vue-tsc --noEmit && vite build --outDir dist/server --ssr src/entry-server.ts && vite build --outDir dist/client --ssrManifest",
-    "prod": "cross-env SERVER_RENDER_MODE=production node server.js"
+    "build": "npm run build:client && npm run build:server",
+    "prod": "cross-env SERVER_RENDER_MODE=production node server.js",
+    "preview": "npm run build:client && npm run build:server && npm run prod"
   },
   "dependencies": {
     "@vue/server-renderer": "^3.2.26",

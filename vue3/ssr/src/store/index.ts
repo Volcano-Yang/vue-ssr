@@ -9,6 +9,7 @@ export const store = createStore({
     },
     mutations: {
         increment(state) {
+            // @ts-ignore
             state.count++
         }
     }
