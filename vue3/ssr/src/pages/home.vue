@@ -12,14 +12,50 @@
   <FooterComponent msg="home footer"></FooterComponent>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import Bar from "../components/Bar.vue";
+import FooterComponent from "../components/Footer.vue";
+import Content from "../components/Content.vue";
+import Cat from "../components/Cat.vue";
+import Count from "../components/Count.vue";
+import { defineComponent } from "vue";
+
+import axios from "axios";
+
+export default defineComponent({
+  name: "Home",
+  components: {
+    Bar,
+    FooterComponent,
+    Content,
+    Cat,
+    Count,
+  },
+
+  setup() {},
+
+  async asyncData() {
+    const getCatImagesResult = await axios.get(
+      "https://dog.ceo/api/breeds/image/random"
+    );
+
+    const catImageUrl = getCatImagesResult?.data?.message ?? "";
+
+    return {
+      catImageUrl,
+    };
+  },
+});
+</script>
+
+<!-- <script setup lang="ts">
 import Bar from '../components/Bar.vue'
 import FooterComponent from '../components/Footer.vue'
 import Content from '../components/Content.vue'
 import Cat from '../components/Cat.vue'
 import Count from '../components/Count.vue'
 
-</script>
+</script> -->
 
 <style>
 .home-page {

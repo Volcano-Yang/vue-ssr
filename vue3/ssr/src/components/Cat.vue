@@ -26,11 +26,11 @@ let asyncData = reactive({
   catImageUrl: '',
 });
 
-if (!isNode && window.__ASYNCDATA__) {
-  asyncData = reactive(window.__ASYNCDATA__);
-}
+// if (!isNode && window.__ASYNCDATA__) {
+//   asyncData = reactive(window.__ASYNCDATA__);
+// }
 
-console.log("created catImageUrl", asyncData.catImageUrl);
+// console.log("created catImageUrl", asyncData.catImageUrl);
 
 </script>
 
