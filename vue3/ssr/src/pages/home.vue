@@ -1,6 +1,10 @@
 <template>
   <Bar msg="home bar"></Bar>
-  <content msg="home content"></content>
+  <content msg="home contents"></content>
+  <div>{{ catImageUrl }}</div>
+  <button class="count" type="button" @click="()=>{ test++; }">
+    Test is: {{ test }}
+  </button>
   <suspense>
     <template #default>
       <Cat></Cat>
@@ -18,7 +22,7 @@ import FooterComponent from "../components/Footer.vue";
 import Content from "../components/Content.vue";
 import Cat from "../components/Cat.vue";
 import Count from "../components/Count.vue";
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, reactive, toRefs } from "vue";
 import { useStore } from "vuex";
 
 import axios from "axios";
@@ -38,9 +42,15 @@ export default defineComponent({
 
     console.log("store.state", store.state);
 
+    const asyncDataRective = reactive(store.state);
+
+    console.log("asyncDataRective ", asyncDataRective);
+
+    console.log("asyncDataRective toRefs", toRefs(asyncDataRective));
+
     const setupResult = ref("test");
 
-    return { setupResult };
+    return { ...toRefs(asyncDataRective), setupResult };
   },
 
   async asyncData() {
@@ -52,6 +62,7 @@ export default defineComponent({
 
     return {
       catImageUrl,
+      test: 2,
     };
   },
 });
