@@ -8,6 +8,9 @@
   </head>
   <body>
     <div id="app"><!--ssr-outlet--></div>
+    <script>
+      window.__ASYNC_DATA__ = '<vue3-ssr-async-data>';
+    </script>
     <script type="module" src="./src/entry-client.ts"></script>
   </body>
 </html>

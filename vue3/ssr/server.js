@@ -11,7 +11,7 @@ async function createServer() {
   const app = express();
 
   app.use(function (req, res, next) {
-    console.log("Time:", Date.now());
+    console.log("\n\n\nTime:", Date.now());
     console.log("req", req);
     console.log("req.originalUrl", req.originalUrl);
     next();
@@ -25,6 +25,16 @@ async function createServer() {
       next();
     },
     express.static(path.join(__dirname, "./dist/client/assets"), {
+      index: false,
+    })
+  );
+  app.use(
+    "/favicon.ico",
+    function (req, res, next) {
+      console.log("命中静态文件", path.join(__dirname, "./dist/client"));
+      next();
+    },
+    express.static(path.join(__dirname, "./dist/client"), {
       index: false,
     })
   );
@@ -49,6 +59,8 @@ async function createServer() {
   app.use("*", async (req, res) => {
     // 服务 index.html - 下面我们来处理这个问题
     const url = req.originalUrl;
+
+    if (url === "/favicon.ico/") return;
 
     console.log("当前访问ssr页面的url", url);
 
@@ -75,11 +87,18 @@ async function createServer() {
         // 生产环境用打包产物
         const render = require("./dist/server/entry-server.js").render;
         console.log("render", render);
-        const appHtml = await render(url, manifest);
-        console.log("appHtml", appHtml);
+        const renderResult = await render(url, manifest);
+        console.log("renderResult", renderResult);
+
+        if (!renderResult.template) res.status(404).end("404");
 
         // 5. 注入渲染后的应用程序 HTML 到模板中。
-        const html = template.replace(`<!--ssr-outlet-->`, appHtml.template);
+        const html = template
+          .replace(`<!--ssr-outlet-->`, renderResult.template)
+          .replace(
+            `'<vue3-ssr-async-data>'`,
+            JSON.stringify(renderResult.asyncData)
+          );
 
         // 6. 返回渲染后的 HTML。
         res.status(200).set({ "Content-Type": "text/html" }).end(html);
@@ -107,10 +126,17 @@ async function createServer() {
         // 4. 渲染应用的 HTML。这假设 entry-server.js 导出的 `render`
         //    函数调用了适当的 SSR 框架 API。
         //    例如 ReactDOMServer.renderToString()
-        const appHtml = await render(url);
+        const renderResult = await render(url);
+
+        if (!renderResult.template) res.status(404).end("404");
 
         // 5. 注入渲染后的应用程序 HTML 到模板中。
-        const html = template.replace(`<!--ssr-outlet-->`, appHtml.template);
+        const html = template
+          .replace(`<!--ssr-outlet-->`, renderResult.template)
+          .replace(
+            `'<vue3-ssr-async-data>'`,
+            JSON.stringify(renderResult.asyncData)
+          );
 
         // 6. 返回渲染后的 HTML。
         res.status(200).set({ "Content-Type": "text/html" }).end(html);
@@ -119,7 +145,7 @@ async function createServer() {
       // 如果捕获到了一个错误，让 Vite 来修复该堆栈，这样它就可以映射回
       // 你的实际源码中。
       vite.ssrFixStacktrace(e);
-      console.error(e);
+      console.error("直出失败", e);
       res.status(500).end(e.message);
     }
   });
