@@ -1,6 +1,6 @@
 <template>
   <Bar msg="home bar"></Bar>
-  <Count></Count>
+  <content msg="home content"></content>
   <suspense>
     <template #default>
       <Cat></Cat>
@@ -18,7 +18,8 @@ import FooterComponent from "../components/Footer.vue";
 import Content from "../components/Content.vue";
 import Cat from "../components/Cat.vue";
 import Count from "../components/Count.vue";
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import { useStore } from "vuex";
 
 import axios from "axios";
 
@@ -32,7 +33,15 @@ export default defineComponent({
     Count,
   },
 
-  setup() {},
+  setup() {
+    const store = useStore();
+
+    console.log("store.state", store.state);
+
+    const setupResult = ref("test");
+
+    return { setupResult };
+  },
 
   async asyncData() {
     const getCatImagesResult = await axios.get(
