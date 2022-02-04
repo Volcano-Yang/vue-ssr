@@ -11,7 +11,6 @@ if (window.__ASYNC_DATA__) {
 
 router.isReady().then(() => {
   console.log("客户端 app", app);
-  // @ts-ignore
-  console.log("window.__ASYNC_DATA__", window.__ASYNC_DATA__);
+
   app.mount('#app');
 });
