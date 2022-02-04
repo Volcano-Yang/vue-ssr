@@ -1,12 +1,14 @@
 <template>
   <div>
-    <bar></bar>
+    <bar />
     <div>
       {{ msg }}
 
-      <button @click="increment">{{ count }}</button>
+      <button @click="increment">
+        {{ count }}
+      </button>
     </div>
-    <footer-componet></footer-componet>
+    <footer-componet />
   </div>
 </template>
 
@@ -25,6 +27,11 @@ export default {
       msg: "home page",
     };
   },
+  computed: {
+    count() {
+      return this.$store.state.count;
+    },
+  },
   created() {
     const isNode =
       typeof globalThis.process !== "undefined" &&
@@ -38,11 +45,6 @@ export default {
   },
   mounted() {
     console.log("this.$store.state", this.$store.state);
-  },
-  computed: {
-    count() {
-      return this.$store.state.count;
-    },
   },
   methods: {
     increment() {

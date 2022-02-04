@@ -1,16 +1,18 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">首页</router-link>
-      <router-link to="/topic">话题页</router-link>
+      <!-- eslint-disable-next-line vue/singleline-html-element-content-newline -->
+      <router-link to="/"> 首页 </router-link>
+      <!-- eslint-disable-next-line vue/singleline-html-element-content-newline -->
+      <router-link to="/topic"> 话题页 </router-link>
     </nav>
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
-  name: "app",
+  name: "App",
 };
 </script>
 

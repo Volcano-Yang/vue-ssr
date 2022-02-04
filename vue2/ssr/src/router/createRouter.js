@@ -1,11 +1,10 @@
-import Vue from "vue";
-import Router from "vue-router";
-
 /**
  * 1. 引入页面组件
  */
 import Home from "../pages/home.vue";
+import Router from "vue-router";
 import Topic from "../pages/topic.vue";
+import Vue from "vue";
 
 /**
  *  2. 定义路由

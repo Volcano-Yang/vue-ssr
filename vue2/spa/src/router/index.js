@@ -1,12 +1,10 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-
 /**
  * 1. 引入页面组件
  */
-import Home from '../pages/home.vue'
-import Topic from '../pages/topic.vue'
-
+import Home from "../pages/home.vue";
+import Router from "vue-router";
+import Topic from "../pages/topic.vue";
+import Vue from "vue";
 
 /**
  *  2. 定义路由
@@ -17,17 +15,17 @@ import Topic from '../pages/topic.vue'
  */
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/topic', component: Topic }
-]
+  { path: "/", component: Home },
+  { path: "/topic", component: Topic },
+];
 
-/** 
- * 3. 创建 router 实例，然后传 `routes` 配置 
+/**
+ * 3. 创建 router 实例，然后传 `routes` 配置
  * 你还可以传别的配置参数, 不过先这么简单着吧。
- * */ 
+ * */
 const router = new Router({
-  routes
-})
+  routes,
+});
 
 // 注册全局组件
 Vue.use(Router);

@@ -11,7 +11,7 @@ const config = {
 
   output: {
     //要指向express中的静态服务器目录
-    publicPath: '/dist/client',
+    publicPath: "/dist/client",
     path: path.resolve(__dirname, "./dist/client"),
     filename: "client-bundle.js",
   },
@@ -54,10 +54,7 @@ const config = {
     },
   },
 
-  plugins: [
-    new VueLoaderPlugin(),
-    new VueSSRClientPlugin(),
-  ],
+  plugins: [new VueLoaderPlugin(), new VueSSRClientPlugin()],
 };
 
 module.exports = config;

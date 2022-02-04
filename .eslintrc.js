@@ -8,6 +8,9 @@ module.exports = {
     es2021: true,
   },
   extends: ["eslint:recommended", "plugin:prettier/recommended"],
+  parserOptions: {
+    sourceType: "module",
+  },
   overrides: [
     // 处理 vue 文件
     {

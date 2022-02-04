@@ -10,10 +10,10 @@ const config = {
 
   output: {
     filename: "client-bundle.js",
-    clean: true, 
+    clean: true,
   },
 
-  devtool: 'source-map',
+  devtool: "source-map",
 
   module: {
     rules: [
@@ -24,7 +24,6 @@ const config = {
           {
             loader: "html-loader",
           },
-        
         ],
       },
       // 它会应用到普通的 `.css` 文件
@@ -43,8 +42,8 @@ const config = {
       // 根据此模版生成 HTML 文件
       template: path.join(__dirname, "./public/spa.template.html"),
     }),
-    new VueLoaderPlugin()
-  ]
+    new VueLoaderPlugin(),
+  ],
 };
 
 module.exports = config;

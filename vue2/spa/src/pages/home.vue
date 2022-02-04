@@ -1,12 +1,14 @@
 <template>
   <div>
-    <bar></bar>
+    <Bar />
     <div>
       {{ msg }}
 
-      <button @click="increment">{{ count }}</button>
+      <button @click="increment">
+        {{ count }}
+      </button>
     </div>
-    <footer-componet></footer-componet>
+    <footer-componet />
   </div>
 </template>
 

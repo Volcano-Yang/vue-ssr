@@ -21,7 +21,7 @@ const renderer = createBundleRenderer(serverBundle, {
 });
 
 // 中间件处理静态文件请求
-app.use('/dist', express.static('dist'));
+app.use("/dist", express.static("dist"));
 
 // 路由处理交给vue
 app.get("*", async (req, res) => {
@@ -36,13 +36,16 @@ app.get("*", async (req, res) => {
 
     // console.log("直出html", html);
 
-    html = html.replace("// window.__INITIAL_STATE__", `window.__INITIAL_STATE__ = {
+    html = html.replace(
+      "// window.__INITIAL_STATE__",
+      `window.__INITIAL_STATE__ = {
       count: 1,
       replaceState: true,
-    }`)
+    }`
+    );
 
     // console.log("添加state后的html", html);
-    
+
     res.send(html);
   } catch (error) {
     console.log("服务器内部错误", error);

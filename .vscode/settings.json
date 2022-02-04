@@ -1,50 +1,42 @@
 {
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": true,
-  "eslint.validate": [
-      "javascript",
-      "javascriptreact",
-      "vue"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "vue"],
   "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-      "source.fixAll.stylelint": true
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
   },
   "eslint.alwaysShowStatus": true,
-  "stylelint.validate": [
-      "css",
-      "less",
-      "sass",
-      "postcss",
-      "vue",
-  ],
+  "stylelint.validate": ["css", "less", "sass", "postcss", "vue"],
   "vetur.format.defaultFormatter.js": "none",
   "vetur.format.defaultFormatter.html": "none",
   "vetur.format.defaultFormatter.ts": "none",
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "singleQuote": false,
+      "semi": false
+    }
+  },
   "terminal.integrated.profiles.linux": {
-      "zsh": {
-          "path": "zsh",
-      },
-      "bash": {
-          "path": "bash",
-          "icon": "terminal-bash"
-      },
+    "zsh": {
+      "path": "zsh"
+    },
+    "bash": {
+      "path": "bash",
+      "icon": "terminal-bash"
+    }
   },
   "terminal.integrated.profiles.osx": {
-      "zsh": {
-          "path": "zsh",
-          "args": [
-              "-l"
-          ]
-      },
-      "bash": {
-          "path": "bash",
-          "args": [
-              "-l"
-          ],
-          "icon": "terminal-bash"
-      },
+    "zsh": {
+      "path": "zsh",
+      "args": ["-l"]
+    },
+    "bash": {
+      "path": "bash",
+      "args": ["-l"],
+      "icon": "terminal-bash"
+    }
   },
   "terminal.integrated.defaultProfile.linux": "zsh",
-  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.osx": "zsh"
 }

@@ -5,7 +5,6 @@ const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
 const VueSSRServerPlugin = require("vue-server-renderer/server-plugin");
 
-
 const config = {
   // 这允许 webpack 以 Node 适用方式处理动态导入(dynamic import)，
   // 并且还会在编译 Vue 组件时告知 `vue-loader` 输送面向服务器代码(server-oriented code)。
@@ -46,10 +45,7 @@ const config = {
     ],
   },
 
-  plugins: [
-    new VueLoaderPlugin(), 
-    new VueSSRServerPlugin(),
-  ],
+  plugins: [new VueLoaderPlugin(), new VueSSRServerPlugin()],
 };
 
 module.exports = config;
